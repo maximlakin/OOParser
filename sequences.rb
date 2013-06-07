@@ -1,43 +1,37 @@
-#make a list of patterns sorted by count
+#Abstraction
 class Sequences
-	#create an empty array to hold the 3page page visits
+	#implement member data initialization and attr_accessor
 	def initialize
-		@sequences = []
+
 	end
-	#takes an individual user's record and picks out the patterns
-	def count(records)
-		records.user_records.each do |user_record|
-			process_record(user_record)
-		end
+	#implement the method for getting Pattern objects to 
+	def count
+
 	end
+
 	#prints the patterns
 	def print
 		sort_patterns.each do |p|
-			puts "count: #{p.count} for sequence: #{p.to_s}"
+			puts "count: #{p.count} for sequence: #{p.to_s} {p.user_ids.each{|id| puts id}}"
 		end
 	end
 
+	#encapsulation
 	private
-	#goes through the user's records and either updates cound for existing patterns or creates a new record for new patterns
-	def process_record(user_record)
-		records = user_record.records
-		position = 0
-		while position + 2 < records.size
-			pattern = Pattern.new(records[position..position+2])
-			@sequences.include?(pattern) ? find(pattern).increment : @sequences << pattern
-			position+=1
+
+		#creates a 
+		def process_record(user_history)
+			#create a collection of Pattern objects from user_history
 		end
-	end
-	#retrieves a pattern from sequences
-	def find(pattern)
-		index = @sequences.index(pattern)
-		if index
-			@sequences[index]
+
+		#implement the a find method
+		def find(pattern)
+
 		end
-	end
-	#sorts the patterns
-	def sort_patterns
-		@sequences.sort
-	end
+
+		#implement a method for sorting patterns
+		def sort_patterns
+
+		end
 
 end

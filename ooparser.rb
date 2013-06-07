@@ -1,29 +1,33 @@
-require './user_record'
+require './user_history'
 require './pattern'
-require './records'
+require './user_records'
 require './sequences'
-#this parser converts a log file into a list of user's consequent three page visits ordered by number of occurances
+
 class Parser
-	#initialize a file, a records object, and a sequences object
+	#load a file and instantiate two member fields:
+	# UserRecords class
+	# Sequences class
 	def initialize(path="logfile.txt")
 		@file = File.open(path)		
-	    @records = Records.new
+	    @records = UserRecords.new
 	    @sequences = Sequences.new
 	end
-	#count sequences and print
-	def display
+	
+	def display_visits
 		count_sequences
 		@sequences.print
 	end
 
+	#Encapsulation
 	private
-	#the record object is constructed from the @file log file variable, then the sequences are built from the records object
-	def count_sequences
-		@records.build_records(@file)
-		@sequences.count(@records)
-	end
+	
+		def count_sequences
+			@records.build_records(@file)
+			@sequences.count(@records)
+		end
 
 end
-
-p = Parser.new("logfile.txt")
-p.display
+def show
+	parser = Parser.new("logfile.txt")
+	parser.display_visits #render parser
+end
